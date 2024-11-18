@@ -1,0 +1,205 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Management Admin</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#events">Upcoming Events</a></li>
+      <li><a href="#performance">Performance</a></li>
+      <li><a href="#leaderboard">Leaderboard</a></li>
+      <li><a href="#reminders">Event Reminders</a></li>
+      <li><a href="#assistance">Request Assistance</a></li>
+      <li><a href="athlete-details.html">Athlete Details</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+
+    
+   
+
+     Event Reminder Section -->
+    <!-- <section id="reminders">
+        <h2>Event Reminders</h2>
+        <div id="reminder-list">
+          List of event reminders -->
+        <!-- </div>
+        <button onclick="openReminderModal()">Add Reminder</button>
+      </section> -->
+
+    <!-- Request Assistance Section -->
+    <!-- Event Selection and Display Image Section -->
+
+
+
+
+    <!-- Modal for Adding Reminders -->
+    <!-- <div id="reminder-modal" class="modal">
+        <div class="modal-content">
+          <h2>Add Event Reminder</h2>
+          <label for="reminder-event">Event Name:</label>
+          <input type="text" id="reminder-event" required>
+          <label for="reminder-time">Reminder Time:</label>
+          <input type="datetime-local" id="reminder-time" required>
+          <button onclick="saveReminder()">Save Reminder</button>
+          <button onclick="closeModal()">Cancel</button>
+        </div>
+      </div> -->
+  <!-- </div>
+
+  <script src="app.js"></script>
+</body> -->
+<!-- </html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Management Admin</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="events.html">Upcoming Events</a></li>
+      <li><a href="performance.html">Performance</a></li>
+      <li><a href="leaderboard.html">Leaderboard</a></li>
+      <li><a href="reminders.html">Event Reminders</a></li>
+      <li><a href="assistance.html">Request Assistance</a></li>
+      <li><a href="athlete-details.html">Athlete Details</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <!-- Event Reminder Section -->
+    <section id="reminders">
+      <h2>Event Reminders</h2>
+      <div id="reminder-list">
+        <!-- List of event reminders -->
+      </div>
+      <button onclick="openReminderModal()">Add Reminder</button>
+    </section>
+
+    <!-- Modal for Adding Reminders -->
+    <div id="reminder-modal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <h2>Add Event Reminder</h2>
+        <label for="reminder-event">Event Name:</label>
+        <input type="text" id="reminder-event" required>
+        <label for="reminder-time">Reminder Time:</label>
+        <input type="datetime-local" id="reminder-time" required>
+        <button onclick="saveReminder()">Save Reminder</button>
+        <button onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let events = []; // Stores all events
+    let reminders = []; // Stores event reminders
+    let leaderboard = [
+      { name: "John Doe", sport: "Soccer", performance: 95 },
+      { name: "Jane Smith", sport: "Basketball", performance: 89 },
+      { name: "Mike Lee", sport: "Tennis", performance: 92 },
+      { name: "Emily Davis", sport: "Soccer", performance: 87 },
+      { name: "Chris Walker", sport: "Basketball", performance: 91 }
+    ];
+
+    // Open Reminder Modal
+    function openReminderModal() {
+      document.getElementById('reminder-modal').style.display = 'flex';
+    }
+
+    // Close Modal
+    function closeModal() {
+      document.getElementById('reminder-modal').style.display = 'none';
+      document.getElementById('reminder-event').value = ''; // Clear input
+      document.getElementById('reminder-time').value = ''; // Clear input
+    }
+
+    // Save Reminder and Update Reminder List
+    function saveReminder() {
+      const eventName = document.getElementById('reminder-event').value.trim();
+      const eventTime = document.getElementById('reminder-time').value.trim();
+
+      if (eventName && eventTime) {
+        // Add the new reminder to the reminders array
+        const newReminder = { name: eventName, date: eventTime };
+        reminders.push(newReminder);
+
+        // Optionally, add to events array if reminders should be part of events
+        events.push(newReminder);
+
+        // Render the updated reminders list
+        renderReminders();
+
+        // Close the modal after saving
+        closeModal();
+      } else {
+        alert("Please fill out both fields for the event name and time.");
+      }
+    }
+
+    // Render Event Reminders in the Reminders Section
+    function renderReminders() {
+      const reminderList = document.getElementById('reminder-list');
+      reminderList.innerHTML = ''; // Clear previous reminders
+      reminders.forEach(reminder => {
+        const reminderItem = document.createElement('div');
+        reminderItem.className = 'reminder-item';
+        reminderItem.innerHTML = `
+          <p><strong>Event:</strong> ${reminder.name}</p>
+          <p><strong>Time:</strong> ${new Date(reminder.date).toLocaleString()}</p>
+        `;
+        reminderList.appendChild(reminderItem);
+      });
+    }
+
+    // Render Upcoming Events
+    function renderEvents() {
+      const eventList = document.getElementById('event-list');
+      if (!eventList) return; // Ensure element exists
+      eventList.innerHTML = ''; // Clear previous events
+      events.forEach(event => {
+        const eventItem = document.createElement('div');
+        eventItem.className = 'event-item';
+        eventItem.innerHTML = `
+          <h3>${event.name}</h3>
+          <p>${new Date(event.date).toLocaleString()}</p>
+        `;
+        eventList.appendChild(eventItem);
+      });
+    }
+
+    // Initial Rendering
+    document.addEventListener('DOMContentLoaded', () => {
+      renderLeaderboard(leaderboard);
+      renderReminders();
+      renderEvents();
+    });
+
+    // Sample function for rendering leaderboard
+    function renderLeaderboard(leaderboardArray) {
+      const leaderboardList = document.getElementById('leaderboard-list');
+      if (!leaderboardList) return; // Ensure element exists
+      leaderboardList.innerHTML = ''; // Clear previous leaderboard items
+      leaderboardArray.forEach(athlete => {
+        const item = document.createElement('li');
+        item.textContent = `${athlete.name} (${athlete.sport}): ${athlete.performance} points`;
+        leaderboardList.appendChild(item);
+      });
+    }
+  </script>
+</body>
+</html>

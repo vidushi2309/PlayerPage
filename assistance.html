@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Management Admin</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="events.html">Upcoming Events</a></li>
+      <li><a href="performance.html">Performance</a></li>
+      <li><a href="leaderboard.html">Leaderboard</a></li>
+      <li><a href="reminders.html">Event Reminders</a></li>
+      <li><a href="assistance.html">Request Assistance</a></li>
+      <li><a href="athlete-details.html">Athlete Details</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    
+
+
+<section id="assistance">
+  <h2>Request Assistance</h2>
+  <div class="assistance-form">
+      <label for="athlete-name-assistance">Athlete Name:</label>
+      <input type="text" id="athlete-name-assistance" placeholder="Enter your name" required>
+      
+      <label for="coach-select">Select Coach:</label>
+      <select id="coach-select" required>
+          <option value="">Select Coach</option>
+          <!-- Coaches will be dynamically added here -->
+      </select>
+
+      <label for="assistance-details">Details:</label>
+      <textarea id="assistance-details" rows="4" placeholder="Enter your request details" required></textarea>
+      
+      <button type="submit" onclick="submitAssistanceRequest()">Submit Request</button>
+  </div>
+
+  <!-- Display Message Section -->
+  <div id="assistance-message"></div>
+</section>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

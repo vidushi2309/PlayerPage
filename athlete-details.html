@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Athlete Details | Sports Management Admin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="events.html">Upcoming Events</a></li>
+      <li><a href="performance.html">Performance</a></li>
+      <li><a href="leaderboard.html">Leaderboard</a></li>
+      <li><a href="reminders.html">Event Reminders</a></li>
+      <li><a href="assistance.html">Request Assistance</a></li>
+      <li><a href="athlete-details.html">Athlete Details</a></li>
+    </ul>
+  </div>
+   
+    <div class="main-content">
+      <section id="athlete-details">
+      <h1>Athlete Profile</h1>
+      
+      <button onclick="openAddAthleteModal()">Add New Athlete</button>
+    </section>
+
+      <section>
+          <h2>Upload Athlete Image</h2>
+          <input type="file" id="athlete-image" accept="image/*" onchange="previewImage()">
+          <img id="athlete-image-preview" src="" alt="Preview Image" style="max-width: 200px;"/>
+      </section>
+
+      <section>
+          <h2>Athlete Details</h2>
+          <input type="text" id="athlete-name" placeholder="Name" required>
+          <input type="number" id="athlete-age" placeholder="Age" required>
+          <input type="text" id="athlete-height" placeholder="Height" required>
+          <input type="text" id="athlete-sport" placeholder="Sport" required>
+          <textarea id="athlete-achievements" placeholder="Achievements" required></textarea>
+          <input type="text" id="athlete-address" placeholder="Address" required>
+          <input type="tel" id="athlete-phone" placeholder="Phone Number" required>
+          <button onclick="saveAthleteDetails()">Save</button>
+      </section>
+
+      <div id="athlete-success-message"></div>
+  </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
